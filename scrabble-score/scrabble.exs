@@ -31,16 +31,10 @@ defmodule Scrabble do
   Calculate the scrabble score for the word.
   """
   @spec score(String.t) :: non_neg_integer
-  def score(""), do: 0
-
   def score(word) do
      word
      |> String.upcase()
      |> String.graphemes()
-     |> Enum.reduce(0, fn(x, acc) -> acc + letter_to_score(x) end)
-  end
-
-  defp letter_to_score(letter) do
-    unless @letters[letter] == nil, do: @letters[letter], else: 0
+     |> Enum.reduce(0, fn(x, acc) -> acc + Map.get(@letters, x, 0) end)
   end
 end
