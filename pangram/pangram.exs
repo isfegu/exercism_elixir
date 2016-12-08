@@ -30,5 +30,3 @@ defmodule Pangram do
 
   defp exists?(_, [], prev), do: prev
 end
-
-#IO.inspect Pangram.pangram?("the quick brown fox jumps over the lazy dog")
